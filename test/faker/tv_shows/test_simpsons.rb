@@ -9,19 +9,27 @@ class TestFakerTvShowsSimpsons < Test::Unit::TestCase
   end
 
   def test_characters
-    10.times { assert_match(/\w+/, @tester.character) }
+    deterministically_verify -> { @tester.character } do |character|
+      assert_match(/\w+/, character)
+    end
   end
 
   def test_locations
-    10.times { assert_match(/\w+/, @tester.location) }
+    deterministically_verify -> { @tester.location } do |location|
+      assert_match(/\w+/, location)
+    end
   end
 
   def test_quote
-    10.times { assert_match(/\w+/, @tester.quote) }
+    deterministically_verify -> { @tester.quote } do |quote|
+      assert_match(/\w+/, quote)
+    end
   end
 
   def test_episode_titles
-    10.times { assert_match(/\w+/, @tester.episode_title) }
+    deterministically_verify -> { @tester.episode_title } do |episode_title|
+      assert_match(/\w+/, episode_title)
+    end
   end
 
   def test_locales

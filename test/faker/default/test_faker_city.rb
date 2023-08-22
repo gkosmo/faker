@@ -37,9 +37,8 @@ class TestFakerCity < Test::Unit::TestCase
 
   def test_default_city_formats
     I18n.with_locale(:xx) do
-      100.times do
+      deterministically_verify -> { Faker::Address.city } do |city|
         cities = ['west alice', 'west smith', 'west aliceburg', 'west smithburg', 'aliceburg', 'smithburg']
-        city = Faker::Address.city
 
         assert_includes cities, city, "Expected <#{cities.join(' / ')}>, but got #{city}"
       end

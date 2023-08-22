@@ -9,36 +9,52 @@ class TestFakerTvShowsDrWho < Test::Unit::TestCase
   end
 
   def test_character
-    10.times { assert_match(/\w+/, @tester.character) }
+    deterministically_verify -> { @tester.character } do |character|
+      assert_match(/\w+/, character)
+    end
   end
 
   def test_the_doctor
-    10.times { assert_match(/\w+/, @tester.the_doctor) }
+    deterministically_verify -> { @tester.the_doctor } do |the_doctor|
+      assert_match(/\w+/, the_doctor)
+    end
   end
 
   def test_actor
-    10.times { assert_match(/\w+/, @tester.actor) }
+    deterministically_verify -> { @tester.actor } do |actor|
+      assert_match(/\w+/, actor)
+    end
   end
 
   def test_catch_phrase
-    10.times { assert_match(/\w+/, @tester.catch_phrase) }
+    deterministically_verify -> { @tester.catch_phrase } do |catch_phrase|
+      assert_match(/\w+/, catch_phrase)
+    end
   end
 
   def test_quote
-    10.times { assert_match(/\w+/, @tester.quote) }
+    deterministically_verify -> { @tester.quote } do |quote|
+      assert_match(/\w+/, quote)
+    end
   end
 
   # deprecated
   def test_villian
-    10.times { assert_match(/\w+/, @tester.villian) }
+    deterministically_verify -> { @tester.villian } do |villian|
+      assert_match(/\w+/, villian)
+    end
   end
 
   def test_villain
-    10.times { assert_match(/\w+/, @tester.villain) }
+    deterministically_verify -> { @tester.villain } do |villain|
+      assert_match(/\w+/, villain)
+    end
   end
 
   def test_specie
-    10.times { assert_match(/\w+/, @tester.specie) }
+    deterministically_verify -> { @tester.specie } do |specie|
+      assert_match(/\w+/, specie)
+    end
   end
 
   def test_locales
